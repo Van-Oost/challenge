@@ -12,9 +12,18 @@ function dragNdrop(){
         cursor: "move",
         animation: 150,
     });
-    saveList()
+    
 }
 
+
+$('#sortable').on('sortupdate',function(){
+    saveList();
+ });
+
+
+function addItem(){ 
+    
+};
 
 function editItem(){
 
@@ -22,7 +31,7 @@ function editItem(){
 
 function checkLength(){
     
-}
+};
 
 function deleteItem(){
 
@@ -39,36 +48,27 @@ function updateCounter(){
 function saveList(){
         var listContents = [];
         $("#sortable").each(function(){
-           listContents.push(this.innerHTML);
+            $(".sortable-item").each(function(){
+                 listContents.push(this.innerHTML);
+            })       
         })
         localStorage.setItem("itemsList", JSON.stringify(listContents));
-        console.log(JSON.stringify(listContents))
-
 };
 
 
 function retrieveList(){
     if (localStorage.getItem("itemsList") !== null){
-    var obtainedList = JSON.parse(localStorage.getItem("itemsList"));
-    $( "#sortable" ).innerHTML = obtainedList;
-    }
+        var obtainedList = JSON.parse(localStorage.getItem("itemsList"));
+        $("#sortable").html("")
+        obtainedList.forEach(e => {
+            $("#sortable").append("<li class=\"sortable-item\">"+e+"</li>");
+        });
+    };
 };
 
-/* 
-<script>
-$(function(){
-    var order=JSON.parse(localStorage.order||"[]")
-    $.each(order,function(i,id){
-        $("#"+id).appendTo($( '#sortable' ))
-    })
-    $( '#sortable' ).sortable({
-        stop:stop,
-    });
-    function stop(e,ui){
-        var order=$(this).children().map(function(){return this.id}).get()
-        localStorage.order=JSON.stringify(order)
-    }
-})
-</script> */
 
 
+
+///////////////////////////////////////////
+
+///$('ul').trigger('sortupdate'); // logs update called.
