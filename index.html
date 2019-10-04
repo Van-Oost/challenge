@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
     <title>List Challenge</title>
   </head>
   <body>
@@ -18,11 +18,11 @@
 
     <p id="counter">0</p>
 
-    <ul id="mainList">
-      <li class="listItem">
+    <ul id="sortable" class="sortable-container">
+      <li class="sortable-item">
         <img class="picture" src="/img/dune.jpg" alt="picture Dune" />
         <p class="description">
-          Set in the distant future amidst a feudal interstellar society in
+          DUNE -  Set in the distant future amidst a feudal interstellar society in
           which various noble houses control planetary fiefs, Dune tells the
           story of young Paul Atreides, whose family accepts the stewardship of
           the planet Arrakis.
@@ -30,10 +30,10 @@
         <button class="edit button">EDIT</button>
         <button class="delete button">DELETE</button>
       </li>
-      <li class="listItem">
+      <li class="sortable-item">
         <img class="picture" src="img/starTrek.jpg" alt="picture Star Trek" />
         <p class="description">
-          Beginning in the 23rd Century, Star Trek: The Original Series adeptly
+          STAR TREK - Beginning in the 23rd Century, Star Trek: The Original Series adeptly
           blends sci-fi, adventure, philosophy, and a fierce dedication to
           diversity in order to tell the stories of the legendary crew of the
           USS Enterprise.
@@ -41,14 +41,14 @@
         <button class="edit button">EDIT</button>
         <button class="delete button">DELETE</button>
       </li>
-      <li class="listItem">
+      <li class="sortable-item">
         <img
           class="picture"
           src="img/foundation.jpg"
           alt="picture foundation"
         />
         <p class="description">
-          Hari Seldon, a brilliant psychohistorian does not have the ability to
+          FOUNDATION - Hari Seldon, a brilliant psychohistorian does not have the ability to
           prevent the decline of humanity that he predicts. Instead, he gathers
           together the galaxy’s top scientists and scholars on a bleak outer
           planet and sets out to preserve the accumulated knowledge of humankind
@@ -56,10 +56,10 @@
         <button class="edit button">EDIT</button>
         <button class="delete button">DELETE</button>
       </li>
-      <li class="listItem">
+      <li class="sortable-item">
         <img class="picture" src="img/starWars.jpg" alt="picture Star Wars" />
         <p class="description">
-          A long time ago in a galaxy far, far away. The galaxy is in the midst
+          STAR WARS - A long time ago in a galaxy far, far away. The galaxy is in the midst
           of a civil war. Rebel spies have stolen plans to the Galactic Empire's
           Death Star, a colossal, moon-sized, space station capable of
           destroying entire planets.
@@ -67,14 +67,14 @@
         <button class="edit button">EDIT</button>
         <button class="delete button">DELETE</button>
       </li>
-      <li class="listItem">
+      <li class="sortable-item">
         <img
           class="picture"
           src="img/warhammer.jpg"
           alt="picture Warhammer 40k"
         />
         <p class="description">
-          In the grim, dark future of the 41st millennium, there is only
+          WARHAMMER - In the grim, dark future of the 41st millennium, there is only
           war. Warhammer 40,000 is set in the distant future, where a stagnant
           human civilization is beset by hostile aliens and malevolent
           supernatural creatures from the warp.
@@ -84,6 +84,8 @@
       </li>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="node_modules/jquery.ui.sortable-animation/jquery.ui.sortable-animation.js"></script>
+
     <script src="/list.js"></script>
   </body>
 </html>
