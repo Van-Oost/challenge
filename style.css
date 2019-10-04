@@ -74,12 +74,12 @@ ul {
     border: none;
 }
 .edit {
-    background-color: blue;
+    background-color: #618685;
     
 };
 
 .delete {
-    background-color: red;
+    background-color: #f18973;
 };
 
 .addButton {

@@ -2,6 +2,12 @@ $( document ).ready(function(){
     retrieveList()
     updateCounter()
     dragNdrop()
+
+    $(".delete").click(function(){
+        $(this).parent().remove();
+        //saveList();
+        updateCounter();
+     });
 });
     
 
@@ -15,10 +21,11 @@ function dragNdrop(){
     
 }
 
-
+// Saves the list in local storage after it is dragged and dropped
 $('#sortable').on('sortupdate',function(){
     saveList();
  });
+
 
 
 function addItem(){ 
@@ -33,11 +40,12 @@ function checkLength(){
     
 };
 
-function deleteItem(){
-
+function deleteItem(e){
+    console.log(e)
+    
 };
 
-
+// Updates the counter after changes are made to the list
 function updateCounter(){
     var itemCount = document.getElementById("sortable").getElementsByClassName("sortable-item").length;
     var counter = document.getElementById("counter");
@@ -65,10 +73,3 @@ function retrieveList(){
         });
     };
 };
-
-
-
-
-///////////////////////////////////////////
-
-///$('ul').trigger('sortupdate'); // logs update called.
