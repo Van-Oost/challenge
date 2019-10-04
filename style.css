@@ -20,9 +20,16 @@ h1 {
     font-size: 1.7rem;
 }
 
+#counter {
+    font-size: 2rem;
+    font-family: 'Big Shoulders Display', cursive;
+    position: fixed;
+    top: 1rem;
+    right: 3rem;
+}
+
 #mainList {
     width: 75%;
-    text-align: center;
     margin-top: 2rem;
     margin-left: 0;
 }
