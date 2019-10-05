@@ -29,6 +29,53 @@ h1 {
     right: 3rem;
 }
 
+#hiddenItemAdd {
+    width: 75%;
+    overflow:hidden;
+}
+
+#inputFields {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    text-align: start;
+
+}
+
+.imagePreview {
+    height: 8rem;
+    width: 8rem;
+    border: 2px solid #BEBEBE;
+    border-radius: 15px;
+    margin: 1rem 1rem 1rem 0rem;
+    display:flex;
+    align-items: center;
+    justify-content:  center;
+    color: #BEBEBE;
+}
+
+.imagePreview_img {
+    display:none;
+    width: 100%;
+    border-radius: 15px;
+}
+
+#inputImage{
+    position: relative;
+    height:1rem;
+}
+
+#inputText{
+    border: 2px solid #BEBEBE;
+    text-align: justify;
+    width: 28rem;
+    height: 8rem;
+   
+}
+
+
 #sortable {
     width: 75%;
     margin-top: 2rem;
@@ -38,6 +85,7 @@ h1 {
 .sortable-item {
     list-style: none;
     overflow:hidden;
+    background-color: white;
     
 }
 
@@ -60,28 +108,53 @@ ul {
     margin: 1rem;
     text-align: justify;
     width: 28rem;
-
 }
 
-.button {
+button {
     font-family: 'Roboto', sans-serif;
     color: white;
+    background-color: #A0A0A0;
     width: 4rem;
     height: 1.2rem;
     text-align: center;
     float: right;
     margin:1rem 0.5rem;
     border: none;
+    border-radius: 5px;
 }
-.edit {
-    background-color: #618685;
+
+button:hover {
+    opacity: 0.80;
+ }
+
+#hiddenButtons{
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: column;
+}
+
+
+
+button#save{
+    background-color: green;
+
+};
+
+button#clear{
+    background-color: red;
+    
+
+};
+
+button.edit {
+    background-color: black;
     
 };
 
-.delete {
-    background-color: #f18973;
+button.delete {
+    background-color: blue;
 };
 
-.addButton {
+button.addButton {
     color: green;
 };

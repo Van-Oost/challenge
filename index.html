@@ -18,70 +18,119 @@
 
     <p id="counter">0</p>
 
+    <div id="hiddenItemAdd">
+
+      <input type="file" name="inputImage" id="inputImage" accept="image/x-png,image/gif,image/jpeg">
+      <span id="inputFields">
+        
+        <div class="imagePreview" id="imagePreview">
+          <img class="imagePreview_img" src="" alt="Image Preview">
+          <span class="defaultText">Image Preview</span>
+        </div>
+
+        <input type="text" name="inputText" id="inputText">
+      
+        <div id="hiddenButtons">
+
+            <button id="save">SAVE</button>
+            <button id="clear">CLEAR</button>
+            <button id="undo">UNDO</button>
+        
+        </div>
+      
+      </span>
+      
+      
+
+    </div>
+
+
     <ul id="sortable" class="sortable-container">
+
       <li class="sortable-item">
+
         <img class="picture" src="/img/dune.jpg" alt="picture Dune" />
+
         <p class="description">
           DUNE -  Set in the distant future amidst a feudal interstellar society in
           which various noble houses control planetary fiefs, Dune tells the
           story of young Paul Atreides, whose family accepts the stewardship of
           the planet Arrakis.
         </p>
-        <button class="edit button">EDIT</button>
-        <button class="delete button">DELETE</button>
+
+        <button class="edit">EDIT</button>
+        <button class="delete">DELETE</button>
+
       </li>
+
+
       <li class="sortable-item">
+
         <img class="picture" src="img/starTrek.jpg" alt="picture Star Trek" />
+
         <p class="description">
           STAR TREK - Beginning in the 23rd Century, Star Trek: The Original Series adeptly
           blends sci-fi, adventure, philosophy, and a fierce dedication to
           diversity in order to tell the stories of the legendary crew of the
           USS Enterprise.
         </p>
-        <button class="edit button">EDIT</button>
-        <button class="delete button">DELETE</button>
+
+        <button class="edit">EDIT</button>
+        <button class="delete">DELETE</button>
+
       </li>
+
+
       <li class="sortable-item">
-        <img
-          class="picture"
-          src="img/foundation.jpg"
-          alt="picture foundation"
-        />
+
+        <img class="picture" src="img/foundation.jpg" alt="picture foundation"/>
+
         <p class="description">
           FOUNDATION - Hari Seldon, a brilliant psychohistorian does not have the ability to
           prevent the decline of humanity that he predicts. Instead, he gathers
           together the galaxy’s top scientists and scholars on a bleak outer
           planet and sets out to preserve the accumulated knowledge of humankind
         </p>
-        <button class="edit button">EDIT</button>
-        <button class="delete button">DELETE</button>
+
+        <button class="edit">EDIT</button>
+        <button class="delete">DELETE</button>
+
       </li>
+
+
       <li class="sortable-item">
+
         <img class="picture" src="img/starWars.jpg" alt="picture Star Wars" />
+
         <p class="description">
           STAR WARS - A long time ago in a galaxy far, far away. The galaxy is in the midst
           of a civil war. Rebel spies have stolen plans to the Galactic Empire's
           Death Star, a colossal, moon-sized, space station capable of
           destroying entire planets.
         </p>
-        <button class="edit button">EDIT</button>
-        <button class="delete button">DELETE</button>
+
+        <button class="edit">EDIT</button>
+        <button class="delete">DELETE</button>
+
       </li>
+
+
       <li class="sortable-item">
-        <img
-          class="picture"
-          src="img/warhammer.jpg"
-          alt="picture Warhammer 40k"
-        />
+
+        <img class="picture"src="img/warhammer.jpg" alt="picture Warhammer 40k"/>
+
         <p class="description">
           WARHAMMER - In the grim, dark future of the 41st millennium, there is only
           war. Warhammer 40,000 is set in the distant future, where a stagnant
           human civilization is beset by hostile aliens and malevolent
           supernatural creatures from the warp.
         </p>
-        <button class="edit button">EDIT</button>
-        <button class="delete button">DELETE</button>
+
+        <button class="edit">EDIT</button>
+        <button class="delete">DELETE</button>
+
       </li>
+      
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="node_modules/jquery.ui.sortable-animation/jquery.ui.sortable-animation.js"></script>
