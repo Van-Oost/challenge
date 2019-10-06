@@ -1,13 +1,41 @@
 ///initializes de document and rebuilds the list
 $( document ).ready(function(){
-    retrieveList()
-    updateCounter()
-    dragNdrop()
+
+    retrieveList();
+    updateCounter();
+    dragNdrop();
+    startButtons();
+
+});
+
+//global variable Initialization
+var uploadedImage = null;
+var uploadedText;
+var listEntry;
+var previewContainer = document.getElementById("imagePreview");
+var preview = previewContainer.querySelector(".imagePreview_img");
+var defText = previewContainer.querySelector(".defaultText");
+
+
+    
+// implements the drag and drop sorting
+function dragNdrop(){
+    $( "#sortable" ).sortable({
+        items:".sortable-item",
+        containment: "parent",
+        cursor: "move",
+        animation: 150,
+    });
+}
+
+
+// starts or updates buttons functionalities after the list is built or re-built
+function startButtons(){
 
     //deletes the list entry
     $(".delete").click(function(){
         $(this).parent().remove();
-        //saveList();
+        saveList();
         updateCounter();
      });
 
@@ -18,48 +46,58 @@ $( document ).ready(function(){
         uploadedImage = children[0];
         uploadedText = children[1].innerHTML;
         $("#inputText").val(uploadedText);
-        //$("#inputImage").html(uploadedImage);
-        console.log(uploadedImage);
-        var reader = new FileReader();
-        
         showPreview()
-            
-        var previewContainer = document.getElementById("imagePreview");
-        var preview = previewContainer.querySelector(".imagePreview_img");
-        var image = new Image();
-        var imgSource = uploadedImage.getAttribute('src');
-        image.src = imgSource;
-        preview.setAttribute("src", imgSource);
-        uploadedImage = image;
-        reader.readAsDataURL(file);
-        //$(this).parent().remove(); 
+        loadEditedimage()
+        $(this).parent().remove(); 
+        updateCounter();
 
     });
-        
-});
     
-// implements the drag and drop sory
-function dragNdrop(){
-    $( "#sortable" ).sortable({
-        items:".sortable-item",
-        containment: "parent",
-        cursor: "move",
-        animation: 150,
-    });
-}
+};
 
+
+// saves the input fields
 $("#save").click(function() {
-    
+
+    if(checkInputFields()){
+        
+        var imgSrc = uploadedImage.getAttribute('src');
+        uploadedText = $("#inputText").val()
+        $("#sortable").prepend(
+            "<li class=\"sortable-item\"> <img class=\"picture\"src=\""+imgSrc+"\"/> <p class=\"description\">"+uploadedText+"</p> <button class=\"edit\">EDIT</button> <button class=\"delete\">DELETE</button> </li>"
+        );
+        uploadedImage = null;
+        $("#sortable").sortable( "refresh" );
+        startButtons();
+        alert("item saved")
+        clearInputs();
+        clearPeview()
+        saveList();
+        updateCounter();
+  
+    };
 });
+    
+
 
 $("#clear").click(function() {
-    $("#inputText").val(null);
-    $("#inputImage").val(null);
+    clearInputs()
     clearPeview()
+    updateCounter();
+    uploadedImage = null;
 });
 
 $("#undo").click(function() {
- 
+    clearInputs()
+    clearPeview()
+    if(listEntry!=null){
+        $("#sortable").prepend("<li class=\"sortable-item\">"+listEntry+"</li>");
+        $("#sortable").sortable( "refresh" );
+        startButtons();
+        updateCounter();
+        listEntry = null;
+        uploadedImage = null;
+    }
 });
 
 
@@ -72,21 +110,6 @@ $('#sortable').on('sortupdate',function(){
     saveList();
  });
 
-
-
-
-
-function addItem(){ 
-    
-};
-
-function editItem(){
-
-};
-
-function checkLength(){
-    
-};
 
 
 // Updates the counter after changes are made to the list
@@ -120,43 +143,17 @@ function retrieveList(){
     };
 };
 
-//variables to store the data for the new item on the list
-var uploadedImage;
-var uploadedText;
-var listEntry;
 
 
 // uploads the image and generates the preview
 $("#inputImage").change(function(){
 
-    var previewContainer = document.getElementById("imagePreview");
-    var preview = previewContainer.querySelector(".imagePreview_img");
-    var defText = previewContainer.querySelector(".defaultText");
-    var file = this.files[0]
-
-    console.log(file)    
+    var file = this.files[0]   
     if(file){
         if(checkImageType(file)){
-
-            var reader = new FileReader();
-        
-            showPreview()
-
-            reader.addEventListener("load", function() {
-                var image = new Image();
-                image.src = this.result
-                preview.setAttribute("src", this.result);
-
-                image.onload = function() {
-                    checkImageSize(image, defText, preview)
-                    };
-
-                uploadedImage = image;
-
-            });
             
-            reader.readAsDataURL(file);
-            
+            showPreview();
+            getImgURL(file);
         };
     }
     else {
@@ -167,33 +164,55 @@ $("#inputImage").change(function(){
 
 // shows the preview image
 function showPreview(){
-    var previewContainer = document.getElementById("imagePreview");
-    var preview = previewContainer.querySelector(".imagePreview_img");
-    var defText = previewContainer.querySelector(".defaultText");
     defText.style.display = "none";
     preview.style.display = "block";
 }
 
-//loads a custom image in the preview box
-function loadPreview(image){
-    var previewContainer = document.getElementById("imagePreview");
-    var preview = previewContainer.querySelector(".imagePreview_img");
-    var defText = previewContainer.querySelector(".defaultText");
-    defText.style.display = "none";
-    preview.style.display = "block";
-    preview.setAttribute("src", image)
-
+// clears all input fields
+function clearInputs(){
+    $("#inputText").val(null);
+    $("#inputImage").val(null);
 }
-
 
 // clears the preview image
 function clearPeview(){
-    var previewContainer = document.getElementById("imagePreview");
-    var preview = previewContainer.querySelector(".imagePreview_img");
-    var defText = previewContainer.querySelector(".defaultText");
     defText.style.display = null;
     preview.style.display = null;
 }
+
+
+
+//loads a custom image in the preview box
+function loadEditedimage(){
+
+    var image = new Image();
+    var imgSource = uploadedImage.getAttribute("src");
+    image.src = imgSource;
+    image.alt = uploadedImage.getAttribute("alt");
+    preview.setAttribute("src", imgSource);
+    uploadedImage = image;
+};
+
+//gets the image as url
+function getImgURL(file){
+
+    var reader = new FileReader();
+    reader.addEventListener("load", function() {
+        var image = new Image();
+        image.src = this.result
+        preview.setAttribute("src", this.result);
+
+        image.onload = function() {
+            checkImageSize(image, defText, preview)
+            };
+
+        uploadedImage = image;
+
+    });
+    
+    reader.readAsDataURL(file);
+    return 
+};
 
 
 // checks if the image is of the appropiate type
@@ -208,11 +227,44 @@ function checkImageType(file){
 };
 
 
-// ches the dimensions of the image
-function checkImageSize(image, defText, preview){
+// checks the dimensions of the image
+function checkImageSize(image){
     if(!(image.width===320 || image.height===320)){
         alert("Image size must be 320 X 320 pixels")
         clearPeview()
         $("#inputImage").val(null);
 }};
 
+// checks if an image is base64
+function isBase64(str) {
+    try {
+        return btoa(atob(str)) == str;
+    } catch (err) {
+        return false;
+    }
+}
+
+// checks that the input fields are filled
+function checkInputFields(){
+
+    var txt = $("#inputText").val();
+    var img = uploadedImage
+    
+
+    if(( txt === "" )&&( img === null )){
+
+        alert("nothing to save");
+        return false;
+
+    } else if( txt === "" ){
+
+        alert("Text must be between 1 and 300 chars");
+        return false;
+
+    } else if( img === null){
+
+        alert( "the item must have an image" );
+        return false;
+
+    } else  return true;
+};
