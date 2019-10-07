@@ -1,10 +1,15 @@
+body{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
 
-body {
-    width: 1000px;
-    margin-left: 25%;
-    margin-right: 25%;
+main {
+    width: 750px;
     margin-top: 4%;
     font-family: 'Roboto', sans-serif;
+    display: block;
 }
 
 h1 {
@@ -30,18 +35,14 @@ h1 {
 }
 
 #hiddenItemAdd {
-    width: 75%;
     overflow:hidden;
 }
 
 #inputFields {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    text-align: start;
-
 }
 
 .imagePreview {
@@ -69,22 +70,24 @@ h1 {
 
 #inputText{
     border: 2px solid #BEBEBE;
-    text-align: justify;
     width: 28rem;
     height: 8rem;
-   
+    outline: none;
+    resize: none;
 }
 
 
+
 #sortable {
-    width: 75%;
+    width: 100%;
     margin-top: 2rem;
     margin-left: 0;
 }
 
 .sortable-item {
+    width: 100%;
     list-style: none;
-    overflow:hidden;
+    overflow: hidden;
     background-color: white;
     
 }
@@ -107,11 +110,15 @@ ul {
     float: left;
     margin: 1rem;
     text-align: justify;
+    overflow-wrap: break-word;
     width: 28rem;
+    height: 8rem;
+    display: block;
 }
 
 button {
     font-family: 'Roboto', sans-serif;
+    font-size: 0.6rem;
     color: white;
     background-color: #A0A0A0;
     width: 4rem;
@@ -124,37 +131,123 @@ button {
 }
 
 button:hover {
-    opacity: 0.80;
- }
+    opacity: 0.70;
+}
 
-#hiddenButtons{
+#hiddenButtons {
     display: flex;
     justify-content: flex-end;
     flex-flow: column;
 }
 
 
-
-button#save{
+#save:hover{
     background-color: green;
+}
 
-};
-
-button#clear{
+#clear:hover{
     background-color: red;
+}
+
+#undo:hover {
+    background-color: blue;  
+}
+
+
+.edit:hover {
+    background-color: blue;  
+}
+
+.delete:hover {
+    background-color: red;
+}
+
+
+#addButton:hover {
+    background-color: green;
+}
+
+#hiddenItemAdd {
+    display: none;
+}
+
+button#addButton {
+    clear: both;
+    display: inline-block;
+    float: none;
+    margin-left: auto;;
+}
+
+
+@media only screen and (max-width: 1000px) {
+
+main {
+    margin: 2%;
+}
+
+#counter {
+    position: static;
+    float: right;
+}
+
+.description {
+    width: 90%;
+    height: auto;
+    float: none;
+}
+
+.picture {
+    height: 25%;
+    width: 25%;
+    max-width: 8rem;
+    max-height: 8rem;
+
+    margin: 3%;
+    float: left;
+}
+
+button {
+    float: right;
+}
+
+#sortable{
+    text-align: justify;
+}
+
+
+#hiddenButtons {
+    float: right;
+}
+
+#inputFields {
+    display: inline-block;
+} 
+
+#hiddenButtons {
+    display: inline-block;
+} 
+
+.imagePreview {
     
+    height:8rem;
+    width:8rem;
 
-};
+    margin: 3%;
+    float: left;
+}
 
-button.edit {
-    background-color: black;
-    
-};
+#inputText{
+    width: 90%;
+    height: auto;
+    margin: 3%;
 
-button.delete {
-    background-color: blue;
-};
+}
 
-button.addButton {
-    color: green;
-};
+#inputFields {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+}

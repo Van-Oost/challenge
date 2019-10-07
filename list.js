@@ -41,6 +41,7 @@ function startButtons(){
 
      //loads the list entry into the input fields to be edited
      $(".edit").click(function() {
+        showInputs()
         listEntry = ($(this).parent().html());
         children = ($(this).parent().children());
         uploadedImage = children[0];
@@ -56,7 +57,16 @@ function startButtons(){
 };
 
 
-// saves the input fields
+//when clicked shows input fields to add new items
+$("#addButton").click(function() {
+
+    showInputs()
+
+});
+
+
+
+//when clicked saves the input fields into an item in the list
 $("#save").click(function() {
 
     if(checkInputFields()){
@@ -74,12 +84,13 @@ $("#save").click(function() {
         clearPeview()
         saveList();
         updateCounter();
+        hideInputs()
   
     };
 });
     
 
-
+// clears the input fields
 $("#clear").click(function() {
     clearInputs()
     clearPeview()
@@ -87,6 +98,7 @@ $("#clear").click(function() {
     uploadedImage = null;
 });
 
+//when clicked undoes the changes to the item
 $("#undo").click(function() {
     clearInputs()
     clearPeview()
@@ -95,14 +107,12 @@ $("#undo").click(function() {
         $("#sortable").sortable( "refresh" );
         startButtons();
         updateCounter();
+        hideInputs()
         listEntry = null;
         uploadedImage = null;
     }
+    hideInputs()
 });
-
-
-
-
 
 
 // Saves the list in local storage after it is dragged and dropped
@@ -181,6 +191,21 @@ function clearPeview(){
 }
 
 
+//shows input fields to add new items
+function showInputs(){
+
+    $("#hiddenItemAdd").css("display", "block");
+    $("#addButton").css("display", "none");
+
+};
+
+
+//shows the add button
+function hideInputs(){
+    $("#hiddenItemAdd").css("display", "none");
+    $("#addButton").css("display", "inline-block");
+};
+
 
 //loads a custom image in the preview box
 function loadEditedimage(){
@@ -235,14 +260,7 @@ function checkImageSize(image){
         $("#inputImage").val(null);
 }};
 
-// checks if an image is base64
-function isBase64(str) {
-    try {
-        return btoa(atob(str)) == str;
-    } catch (err) {
-        return false;
-    }
-}
+
 
 // checks that the input fields are filled
 function checkInputFields(){
@@ -254,6 +272,7 @@ function checkInputFields(){
     if(( txt === "" )&&( img === null )){
 
         alert("nothing to save");
+        hideInputs()
         return false;
 
     } else if( txt === "" ){
