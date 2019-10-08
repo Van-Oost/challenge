@@ -143,6 +143,7 @@ function saveList(){
 
 //gets the list from local storage and rebuilds it
 function retrieveList(){
+    
     if (localStorage.getItem("itemsList") !== null){
         var obtainedList = JSON.parse(localStorage.getItem("itemsList"));
         $("#sortable").html("")

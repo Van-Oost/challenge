@@ -17,6 +17,12 @@ A list that can be edited without refreshing the page.
 ## Getting Started
 
 * Download files from repository.
+* run npm install
+
+## Dependencies
+
+* jquery ^3.4.1
+
 
 ## Built With
 
