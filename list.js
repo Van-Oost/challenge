@@ -79,7 +79,6 @@ $("#save").click(function() {
         uploadedImage = null;
         $("#sortable").sortable( "refresh" );
         startButtons();
-        alert("item saved")
         clearInputs();
         clearPeview()
         saveList();
