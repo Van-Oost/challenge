@@ -22,7 +22,7 @@ A list that can be edited without refreshing the page.
 
 * [jquery](https://jquery.com/) 
 * [jquery-ui](https://jqueryui.com/) 
-* [jQuery UI Sortable Animation](https://github.com/egorshar/jquery-ui-sortable-animation) 
+* [jQuery UI Sortable Animation](https://github.com/egych/jquery-ui-sortable-animation) 
 
 ## Authors
 

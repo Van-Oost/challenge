@@ -19,6 +19,6 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
-    "jquery.ui.sortable-animation"
+    "jquery-ui-sortable-animation": "0.0.1"
   }
 }
