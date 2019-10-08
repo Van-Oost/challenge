@@ -32,5 +32,5 @@ A list that can be edited without refreshing the page.
 
 ## Authors
 
-* **Nicolas Van Oost** - [PurpleBooth](https://github.com/Van-Oost)
+* **Nicolas Van Oost** - (https://github.com/Van-Oost)
 
