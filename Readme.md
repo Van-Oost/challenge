@@ -16,7 +16,7 @@ A list that can be edited without refreshing the page.
 	
 ## Getting Started
 
-* Fetch files from repository.
+* Download files from repository.
 
 ## Built With
 
